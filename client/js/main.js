@@ -8,6 +8,25 @@
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const isFinePointer = window.matchMedia('(pointer: fine)').matches;
 
+  /* Keep the reading position visible without adding another UI control. */
+  (function scrollProgress() {
+    if (prefersReducedMotion) return;
+    let frame;
+    const update = () => {
+      const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = scrollable > 0 ? window.scrollY / scrollable : 0;
+      document.documentElement.style.setProperty('--scroll-progress', progress.toFixed(4));
+      document.body.classList.toggle('page-scrolled', window.scrollY > 24);
+      frame = null;
+    };
+    const requestUpdate = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+    window.addEventListener('scroll', requestUpdate, { passive: true });
+    window.addEventListener('resize', requestUpdate);
+    update();
+  })();
+
   /* ------------------------------------------------------------------
      1. TECHNICAL GRID — vertical lines, horizontal lines, + intersections
   ------------------------------------------------------------------ */
@@ -167,12 +186,20 @@
     const openBtn = document.getElementById('menu-toggle');
     const closeBtn = document.getElementById('menu-close');
     if (!menu || !openBtn) return;
+    let previousFocus = null;
 
     const setOpen = (open) => {
       menu.classList.toggle('open', open);
       menu.setAttribute('aria-hidden', String(!open));
       openBtn.setAttribute('aria-expanded', String(open));
       document.body.style.overflow = open ? 'hidden' : '';
+      if (open) {
+        previousFocus = document.activeElement;
+        closeBtn?.focus();
+      } else {
+        previousFocus?.focus?.();
+        previousFocus = null;
+      }
     };
 
     openBtn.addEventListener('click', () => setOpen(true));
@@ -180,6 +207,9 @@
     menu.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setOpen(false)));
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') setOpen(false);
+    });
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 768 && menu.classList.contains('open')) setOpen(false);
     });
   })();
 
