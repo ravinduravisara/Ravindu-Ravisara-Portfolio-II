@@ -1,0 +1,58 @@
+[
+  {
+    "title": "Fire Production (Pvt)Ltd (Client Project)",
+    "category": "MERN / Full-Stack Web Application",
+    "description": "Designed and developed a professional, responsive business website to strengthen the company's online presence and improve customer engagement. The website includes well-structured pages for company information, services, portfolio, and contact, optimized for performance, usability, and search visibility. It integrates modern UI design principles, mobile responsiveness, basic SEO setup, and direct customer communication tools such as contact forms and WhatsApp chat, ensuring accessibility across all major browsers and devices.",
+    "tech": ["React", "Node", "Express", "MongoDB", "Tailwind"],
+    "highlight": "Developed a responsive professional business website with modern UI design, mobile optimization, contact form and WhatsApp integration, and basic SEO setup, demonstrating strong full-stack web development skills using the MERN stack.",
+    "url": "https://fireproductions.lk/"
+  },
+  {
+    "title": "Wellness Tracker App",
+    "category": "Android / Mobile Application Development",
+    "description": "Developed a native Android application using a professional design-to-development workflow. Initiated the project with Figma for comprehensive UI/UX planning, and built the responsive application using a modern Android development stack. The application was integrated with a persistent database via RESTful API for seamless data management",
+    "tech": ["Kotlin/Java + XML", "Room", "ViewModel", "LiveData", "Figma"],
+    "highlight": "Implemented a full end-to-end Android architecture with MVVM, Room database, and RESTful API integration, delivering a responsive, scalable, and offline-capable mobile application.Implemented MVVM architecture with Room and reactive UI.",
+    "url": "https://github.com/ravinduravisara/EcoTrack.git"
+  },
+  {
+    "title": "Hotel Management System (Client Project)",
+    "category": "MERN / Full-Stack Web Application",
+    "description": "Developed a commercial-grade, full-stack application using the MERN stack to manage hotel operations. The system handles reservations, room inventory, and guest check-in/out,demonstrating the ability to deliver a complex, client-based project that meets specific business requirements.",
+    "tech": ["React", "Node", "Express", "MongoDB", "Tailwind"],
+    "highlight": "Delivered a fully functional hotel management platform with real-time reservation handling, automated room availability tracking, and streamlined check-in/check-out workflows, demonstrating the ability to build complex, client-ready MERN applications.Planned API structure for products, cart, and voice integration.",
+    "url": "https://github.com/ravinduravisara/Green-Pasture-Hotel.git"
+  },
+  {
+    "title": "Online Bidding System",
+    "category": "Java / Full-Stack Web Application",
+    "description": "Designed and built a secure, feature-rich full-stack web application to facilitate online auctions. The system handled secure user authentication, bid validation, and successful finalization of auction transactions, using the Java environment for server-side processing and a MySQL database.Small projects exploring datasets, distributions, and outlier detection in R.",
+    "tech": ["HTML", "CSS", "JavaScript", "Java Server", "MySQL"],
+    "highlight": "Built a secure, transaction-safe bidding system with real-time bid validation, authenticated user workflows, and reliable auction finalization using Java server-side processing and MySQL, showcasing strong backend logic and full-stack development skills.Focused on understanding data and visualizations.",
+    "url": "https://github.com/DinithaR/BidMaster.git"
+  },
+  {
+    "title": "Boat Safari System",
+    "category": "PHP / Full-Stack Web Application",
+    "description": "Boat Safari System: Developed a full-stack web application using web development technologies for server-side logic,data management, and the client-side interface. Features include an interactive booking system, real-time availability checks, and an admin panel for managing tours and bookings",
+    "tech": ["HTML", "CSS", "JavaScript", "PHP", "MySQL"],
+    "highlight": "Implemented an interactive safari booking platform with real-time availability tracking, secure reservation handling, and an admin dashboard for managing tours and customer bookings, demonstrating strong full-stack skills in PHP and MySQL.",
+    "url": "https://github.com/ravinduravisara/Boat-Safari-System.git"
+  },
+  {
+    "title": "ISURU-Service-Center-Billing-System-Offline-Software-",
+    "category": "C# & .NET / Advanced Billing-System-Offline-Software",
+    "description": "Client Project ;Incudes following features :Basic Billing Features,. Printing Support,Dashboard & Analytics, Service Management,Customer & Vehicle Management,Stock & Inventory Management,Role-Based Access,Supply Management,Backup & Restore,User-Friendly Interface,Reports & Invoices,Notifications & Alerts,Data Security & Encryption,Multi-User Support,Search & Filter,Settings & Customization,Integration Capabilities,Help & Support",
+    "tech": ["C#", ".NET", "SQL Server", "WPF", "MVVM"],
+    "highlight": "Developed a comprehensive offline service station billing and management system with secure invoicing, inventory and service tracking, role-based user access, real-time analytics dashboard, and integrated printing support, showcasing strong desktop application development skills using C#, WPF (MVVM), and SQLite.",
+    "url": "https://github.com/ravinduravisara/ISURU-Service-Center-Billing-System-Offline-Software-.git"
+  },
+  {
+    "title": "Online Instrument Rental Platform ",
+    "category": "MERN / Full-Stack Web Application",
+    "description": "Developed a fully functional web application using the MERN stack. Implemented a RESTful API for backend logic and utilized React for a dynamic, component-based frontend, allowing users to efficiently browse, filter, and reserve instruments.",
+    "tech": ["React", "Node", "Express", "MongoDB", "Tailwind"],
+    "highlight": "Implemented a complete end-to-end rental workflow with real-time availability updates, advanced filtering, and a responsive React UI, creating a seamless instrument browsing and reservation experience.",
+    "url": "https://github.com/DinithaR/TuneShare-ITP.git"
+  }
+]

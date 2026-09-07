@@ -1,0 +1,26 @@
+{
+  "name": "ravindu-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Ravindu Ravisara portfolio website",
+  "main": "server.js",
+  "scripts": {
+    "start": "npm run build:css && node server.js",
+    "dev": "npm run build:css && node --watch server.js",
+    "seed": "node server/seed/seedProjects.js",
+    "build": "npm run build:css",
+    "build:css": "tailwindcss -i ./client/css/tailwind.css -o ./client/css/style.css",
+    "watch:css": "npm run build:css -- --watch"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mongoose": "^8.5.0",
+    "nodemailer": "^10.0.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.3.3",
+    "tailwindcss": "^4.3.3"
+  }
+}
