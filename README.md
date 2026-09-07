@@ -56,6 +56,23 @@ receives portfolio messages.
 
 The Express server serves the client from `/client` and the API under `/api`.
 
+## Vercel deployment
+
+Deploy from the repository root. Vercel uses `api/index.js` for the Express API
+and `vercel.json` to serve the client files. Add these Environment Variables in
+the Vercel project settings for the Production environment:
+
+```text
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=465
+SMTP_SECURE=true
+SMTP_USER=ravinduravisara@gmail.com
+SMTP_PASS=your-new-gmail-app-password
+CONTACT_EMAIL=ravinduravisara@gmail.com
+MONGO_URI=your-mongodb-atlas-connection-string
+```
+
+Redeploy after adding or changing variables. Do not commit `.env` or App Passwords.
 ## API
 
 | Method | Endpoint             | Description                        |
