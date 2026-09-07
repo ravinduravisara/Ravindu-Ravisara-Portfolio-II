@@ -633,6 +633,10 @@ a {
   @apply max-w-[1240px] [margin:0_auto] flex justify-between gap-[20px] flex-wrap text-[length:10px]
     tracking-[0.12em] text-[var(--subtle)];
 }
+.footer-brand { @apply inline-flex items-center gap-[10px]; }
+.footer-logo {
+  @apply w-[24px] h-[24px] object-cover [filter:invert(1)] opacity-70;
+}
 .f-meta { @apply text-[rgba(255,_255,_255,_0.22)]; }
 .f-top { @apply text-[var(--subtle)] [transition:color_0.25s]; }
 .f-top:hover { @apply text-[var(--accent)]; }
