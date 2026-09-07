@@ -972,6 +972,20 @@ body.artist-mode .artist-content {
   }
 
   .nav-links, .nav-status { @apply hidden; }
+  body.artist-mode .artist-video {
+    z-index: 8;
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    pointer-events: auto;
+  }
+  body.artist-mode .artist-video iframe {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+  }
   body.artist-mode .nav-links.artist-nav { display: none; }
   .nav > .mode-toggle {
     display: inline-flex;

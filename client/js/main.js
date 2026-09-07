@@ -14,6 +14,18 @@
     if (!toggles.length) return;
     let tourFrame = null;
     let previousScrollBehavior = '';
+    let audioEnabled = false;
+
+    const enableArtistAudio = () => {
+      if (!document.body.classList.contains('artist-mode')) return false;
+      const trailer = document.getElementById('artist-trailer-player');
+      if (!trailer?.contentWindow) return false;
+      trailer.contentWindow.postMessage(JSON.stringify({ event: 'command', func: 'unMute', args: [] }), '*');
+      trailer.contentWindow.postMessage(JSON.stringify({ event: 'command', func: 'setVolume', args: [100] }), '*');
+      trailer.contentWindow.postMessage(JSON.stringify({ event: 'command', func: 'playVideo', args: [] }), '*');
+      audioEnabled = true;
+      return true;
+    };
 
     const stopArtistTour = () => {
       if (tourFrame) cancelAnimationFrame(tourFrame);
@@ -53,10 +65,13 @@
 
     const setMode = (isArtist) => {
       if (!isArtist) stopArtistTour();
+      if (!isArtist) audioEnabled = false;
       document.body.classList.toggle('artist-mode', isArtist);
       document.documentElement.dataset.profile = isArtist ? 'artist' : 'engineering';
       const trailer = document.getElementById('artist-trailer-player');
-      if (trailer) trailer.src = isArtist ? trailer.dataset.src : '';
+      if (trailer) {
+        trailer.src = isArtist ? trailer.dataset.src : '';
+      }
       toggles.forEach((toggle) => {
         toggle.setAttribute('aria-pressed', String(isArtist));
         toggle.querySelector('.mode-toggle-label').textContent = isArtist ? 'ENGINEERING MODE' : 'ARTIST MODE';
@@ -66,10 +81,16 @@
     let isArtist = false;
     try { isArtist = localStorage.getItem('ravindu-profile') === 'artist'; } catch (_) {}
     setMode(isArtist);
+    ['pointerdown', 'keydown', 'touchstart'].forEach((eventName) => {
+      window.addEventListener(eventName, () => {
+        if (!audioEnabled) enableArtistAudio();
+      }, { passive: eventName !== 'keydown' });
+    });
     toggles.forEach((toggle) => toggle.addEventListener('click', () => {
       const nextMode = !document.body.classList.contains('artist-mode');
       setMode(nextMode);
       if (!nextMode) return;
+      enableArtistAudio();
 
       const mobileMenu = document.getElementById('mobile-menu');
       if (mobileMenu?.classList.contains('open')) {
