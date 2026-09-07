@@ -8,6 +8,165 @@
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const isFinePointer = window.matchMedia('(pointer: fine)').matches;
 
+  /* Toggle between the engineering portfolio and the artist profile. */
+  (function artistMode() {
+    const toggles = document.querySelectorAll('[data-artist-toggle]');
+    if (!toggles.length) return;
+    let tourFrame = null;
+    let previousScrollBehavior = '';
+
+    const stopArtistTour = () => {
+      if (tourFrame) cancelAnimationFrame(tourFrame);
+      tourFrame = null;
+      if (previousScrollBehavior) {
+        document.documentElement.style.scrollBehavior = previousScrollBehavior;
+        previousScrollBehavior = '';
+      }
+    };
+
+    const runArtistTour = () => {
+      stopArtistTour();
+      previousScrollBehavior = document.documentElement.style.scrollBehavior;
+      document.documentElement.style.scrollBehavior = 'auto';
+      const startedAt = performance.now();
+      const tourDuration = 14000;
+      const startY = 0;
+      window.scrollTo(0, startY);
+
+      const step = (now) => {
+        const elapsed = now - startedAt;
+        const pageBottom = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+        if (elapsed <= tourDuration) {
+          const progress = elapsed / tourDuration;
+          window.scrollTo(0, pageBottom * progress);
+          tourFrame = requestAnimationFrame(step);
+          return;
+        }
+        const returnProgress = Math.min(1, (elapsed - tourDuration) / tourDuration);
+        window.scrollTo(0, pageBottom * (1 - returnProgress));
+        if (returnProgress < 1) tourFrame = requestAnimationFrame(step);
+        else stopArtistTour();
+      };
+
+      tourFrame = requestAnimationFrame(step);
+    };
+
+    const setMode = (isArtist) => {
+      if (!isArtist) stopArtistTour();
+      document.body.classList.toggle('artist-mode', isArtist);
+      document.documentElement.dataset.profile = isArtist ? 'artist' : 'engineering';
+      const trailer = document.getElementById('artist-trailer-player');
+      if (trailer) trailer.src = isArtist ? trailer.dataset.src : '';
+      toggles.forEach((toggle) => {
+        toggle.setAttribute('aria-pressed', String(isArtist));
+        toggle.querySelector('.mode-toggle-label').textContent = isArtist ? 'ENGINEERING MODE' : 'ARTIST MODE';
+      });
+      try { localStorage.setItem('ravindu-profile', isArtist ? 'artist' : 'engineering'); } catch (_) {}
+    };
+    let isArtist = false;
+    try { isArtist = localStorage.getItem('ravindu-profile') === 'artist'; } catch (_) {}
+    setMode(isArtist);
+    toggles.forEach((toggle) => toggle.addEventListener('click', () => {
+      const nextMode = !document.body.classList.contains('artist-mode');
+      setMode(nextMode);
+      if (!nextMode) return;
+
+      const mobileMenu = document.getElementById('mobile-menu');
+      if (mobileMenu?.classList.contains('open')) {
+        document.getElementById('menu-close')?.click();
+      }
+      window.requestAnimationFrame(() => {
+        window.requestAnimationFrame(() => {
+          if (prefersReducedMotion) {
+            document.getElementById('artist-work')?.scrollIntoView({ behavior: 'auto', block: 'start' });
+          } else {
+            runArtistTour();
+          }
+        });
+      });
+    }));
+
+    ['wheel', 'touchstart', 'keydown'].forEach((eventName) => {
+      window.addEventListener(eventName, stopArtistTour, { passive: eventName !== 'keydown' });
+    });
+  })();
+
+  const fallbackArtistWorks = [
+    { title: 'Dase Kathawai', published: '2025-05-13', url: 'https://www.youtube.com/results?search_query=Ravindu+Ravisara+Dase+Kathawai' },
+    { title: 'Wassane', published: '2024-06-01', url: 'https://www.youtube.com/results?search_query=Ravindu+Ravisara+Wassane' },
+    { title: 'Hitha Niwena', published: '2025-01-01', url: 'https://www.youtube.com/results?search_query=Ravindu+Ravisara+Hitha+Niwena' },
+    { title: 'Dakina Hamaware', published: '2024-01-01', url: 'https://www.youtube.com/results?search_query=Ravindu+Ravisara+Dakina+Hamaware' },
+    { title: 'More from the artist', published: '', url: 'https://www.youtube.com/@RavinduRavisara' }
+  ];
+
+  function renderArtistWorks(works, isLiveData, containerId = 'artist-work-grid', isComposition = false) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    container.innerHTML = '';
+
+    works.slice(0, 6).forEach((work, index) => {
+      const title = work.title.replace(/^Ravindu Ravisara\s*[-|:]\s*/i, '').trim();
+      const displayTitle = /oba magemai/i.test(title)
+        ? 'Oba magemai'
+        : /dewliye mage/i.test(title)
+          ? 'Dewliye Mage'
+          : /sihine/i.test(title)
+            ? 'Sihine'
+            : /dase kathawai/i.test(title)
+        ? 'Dase Kathawai'
+        : /hitha niwena/i.test(title)
+          ? 'Hitha Niwena'
+          : /wassane/i.test(title)
+            ? 'Wassane'
+            : /dakina hamaware/i.test(title)
+              ? 'Dakina Hamaware'
+              : title;
+      const published = work.published
+        ? new Intl.DateTimeFormat('en', { year: 'numeric' }).format(new Date(work.published))
+        : '';
+      const isTrailer = /trailer/i.test(title);
+      const card = document.createElement('article');
+      card.className = 'artist-work-card reveal';
+      card.style.setProperty('--d', `${(index % 3) * 90}ms`);
+      const thumbnail = work.thumbnail
+        ? `<img class="work-cover-image" src="${escapeAttr(work.thumbnail)}" alt="" loading="lazy">`
+        : '';
+      card.innerHTML = `
+        <div class="work-cover cover-${(index % 6) + 1}">
+          ${thumbnail}
+          <span>${String(index + 1).padStart(2, '0')} / ${isComposition ? 'COMPOSITION' : isTrailer ? 'TRAILER' : 'RELEASE'}</span>
+          <strong>${escapeHtml(displayTitle)}</strong>
+          <small>${isComposition ? 'LYRICS · COMPOSITION · COLLABORATION' : isLiveData ? 'YOUTUBE // RAVINDU RAVISARA' : 'RAVINDU RAVISARA'}</small>
+        </div>
+        <div class="work-meta">
+          <h3>${escapeHtml(displayTitle)}</h3>
+          <p>${isComposition ? 'Composition collaboration' : isLiveData && published ? `Published on YouTube · ${published}` : 'Original release'}</p>
+          <a href="${escapeAttr(work.url)}" target="_blank" rel="noopener">${isTrailer ? 'WATCH TRAILER' : 'WATCH VIDEO'} ↗</a>
+        </div>
+      `;
+      container.appendChild(card);
+    });
+
+    container.querySelectorAll('.reveal').forEach((element) => element.classList.add('visible'));
+  }
+
+  async function loadArtistWorks() {
+    try {
+      const response = await fetch('/api/artist-works', { headers: { Accept: 'application/json' } });
+      if (!response.ok) throw new Error(`API ${response.status}`);
+      const data = await response.json();
+      if (!Array.isArray(data.works) || !data.works.length) throw new Error('EMPTY');
+      renderArtistWorks(data.works, true);
+      if (Array.isArray(data.compositions) && data.compositions.length) {
+        renderArtistWorks(data.compositions, true, 'artist-composition-grid', true);
+      }
+    } catch (_) {
+      renderArtistWorks(fallbackArtistWorks, false);
+    }
+  }
+
+  loadArtistWorks();
+
   /* Keep the reading position visible without adding another UI control. */
   (function scrollProgress() {
     if (prefersReducedMotion) return;

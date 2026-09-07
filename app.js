@@ -6,6 +6,7 @@ const cors = require('cors');
 const connectDB = require('./server/config/db');
 const projectRoutes = require('./server/routes/projects');
 const contactRoutes = require('./server/routes/contact');
+const artistRoutes = require('./server/routes/artist');
 const { notFound, errorHandler } = require('./server/middleware/errorHandler');
 
 const app = express();
@@ -18,6 +19,7 @@ app.use(express.static(path.join(__dirname, 'client')));
 
 app.use('/api/projects', projectRoutes);
 app.use('/api/contact', contactRoutes);
+app.use('/api/artist-works', artistRoutes);
 app.get('/api/health', (req, res) => res.json({ status: 'OK', mode: 'ENGINEERING' }));
 
 app.use((req, res, next) => {

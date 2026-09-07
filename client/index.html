@@ -78,13 +78,23 @@
           RAVINDU RAVISARA <span class="wm-dim"></span>
         </a>
 
-        <nav class="nav-links" aria-label="Primary">
+        <nav class="nav-links engineering-nav" aria-label="Primary">
           <a href="#about"    class="nav-link" data-anim="fadeIn" style="--d:260ms"><span class="nav-num">01.</span>ABOUT</a>
           <a href="#projects" class="nav-link" data-anim="fadeIn" style="--d:320ms"><span class="nav-num">02.</span>PROJECTS</a>
           <a href="#skills"   class="nav-link" data-anim="fadeIn" style="--d:380ms"><span class="nav-num">03.</span>SKILLS</a>
           <a href="#contact"  class="nav-link" data-anim="fadeIn" style="--d:440ms"><span class="nav-num">04.</span>CONTACT</a>
           <span class="nav-status" data-anim="fadeIn" style="--d:500ms">[ AVAILABLE ]</span>
         </nav>
+        <nav class="nav-links artist-nav" aria-label="Artist profile">
+          <a href="#artist-profile" class="nav-link"><span class="nav-num">01.</span>PROFILE</a>
+          <a href="#artist-work" class="nav-link"><span class="nav-num">02.</span>WORKS</a>
+          <a href="#artist-compositions" class="nav-link"><span class="nav-num">03.</span>COMPOSITIONS</a>
+          <a href="#artist-contact" class="nav-link"><span class="nav-num">04.</span>CONNECT</a>
+        </nav>
+        <button class="mode-toggle" type="button" data-artist-toggle aria-pressed="false">
+          <span class="mode-toggle-icon" aria-hidden="true">♫</span>
+          <span class="mode-toggle-label">ARTIST MODE</span>
+        </button>
 
         <button class="menu-toggle" id="menu-toggle" aria-label="Open menu" aria-expanded="false">
           <span></span><span></span>
@@ -95,10 +105,18 @@
       <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
         <button class="menu-close" id="menu-close" aria-label="Close menu">✕</button>
         <nav class="mobile-nav" aria-label="Mobile">
-          <a href="#about"><span>01.</span> ABOUT</a>
+          <a href="#about" class="engineering-nav"><span>01.</span> ABOUT</a>
           <a href="#projects"><span>02.</span> PROJECTS</a>
           <a href="#skills"><span>03.</span> SKILLS</a>
           <a href="#contact"><span>04.</span> CONTACT</a>
+          <a href="#artist-profile" class="artist-nav"><span>01.</span> PROFILE</a>
+          <a href="#artist-work" class="artist-nav"><span>02.</span> WORKS</a>
+          <a href="#artist-compositions" class="artist-nav"><span>03.</span> COMPOSITIONS</a>
+          <a href="#artist-contact" class="artist-nav"><span>04.</span> CONNECT</a>
+          <button class="mode-toggle mobile-mode-toggle" type="button" data-artist-toggle aria-pressed="false">
+            <span class="mode-toggle-icon" aria-hidden="true">♫</span>
+            <span class="mode-toggle-label">ARTIST MODE</span>
+          </button>
         </nav>
         <div class="mobile-meta">BUILD: 2026.PORTFOLIO · MODE: ENGINEERING</div>
       </div>
@@ -130,6 +148,22 @@
         <div class="hero-social" data-anim="fadeUp" style="--d:1050ms">
           <a href="https://github.com/ravinduravisara" target="_blank" rel="noopener">GITHUB ↗</a>
           <a href="https://www.linkedin.com/in/ravindu-ravisara" target="_blank" rel="noopener">LINKEDIN ↗</a>
+          <a href="mailto:ravinduravisara@gmail.com">EMAIL ↗</a>
+        </div>
+      </div>
+
+      <div class="artist-hero" aria-hidden="true">
+        <p class="hero-label">[ ARTIST // LYRICIST // MUSIC COMPOSER ]</p>
+        <h1 class="hero-name"><span class="name-line">RAVINDU</span><span class="name-line">RAVISARA</span></h1>
+        <p class="hero-role">ARTIST · LYRICIST · MUSIC COMPOSER</p>
+        <p class="hero-statement">Songs shaped by memory, place and the quiet details that stay with us.</p>
+        <p class="hero-techline">SRI LANKA // ORIGINAL MUSIC // STORYTELLING</p>
+        <div class="hero-actions">
+          <a href="#artist-work" class="btn btn-primary"><span>♫</span> LISTEN TO MY WORK</a>
+          <a href="#artist-contact" class="btn btn-ghost">BOOK / COLLABORATE ↗</a>
+        </div>
+        <div class="hero-social">
+          <a href="https://www.youtube.com/@RavinduRavisara" target="_blank" rel="noopener">YOUTUBE ↗</a>
           <a href="mailto:ravinduravisara@gmail.com">EMAIL ↗</a>
         </div>
       </div>
@@ -196,6 +230,15 @@
         class="portrait-image"
         id="portrait-image"
       />
+      <div class="artist-video" aria-hidden="true">
+        <iframe
+          id="artist-trailer-player"
+          title="Dase Kathawai official song trailer by Ravindu Ravisara"
+          data-src="https://www.youtube.com/embed/MhMACfO-eZA?autoplay=1&amp;mute=0&amp;loop=1&amp;playlist=MhMACfO-eZA&amp;controls=1&amp;rel=0&amp;playsinline=1"
+          allow="autoplay; encrypted-media; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
       <!-- cursor-follow technical overlay -->
       <div id="tech-reveal" aria-hidden="true">
         <span class="tr-frag tr-1">01&nbsp;&nbsp;SYSTEM</span>
@@ -207,6 +250,52 @@
         <span class="tr-code tr-7">GET /api/projects → 200 OK</span>
       </div>
     </div>
+  </main>
+
+  <!-- ============================== ARTIST PROFILE ============================== -->
+  <main class="artist-content" id="artist-profile">
+    <section class="section artist-intro">
+      <div class="section-inner">
+        <p class="section-label reveal">[ 01 // ARTIST PROFILE ]</p>
+        <div class="artist-intro-grid">
+          <h2 class="section-title words-pull-up">SONGS WITH A POINT OF VIEW</h2>
+          <div class="artist-bio reveal">
+            <p class="ab-num">RAVINDU RAVISARA / SRI LANKA</p>
+            <p class="ab-text">I am Ravindu Ravisara, an artist, lyricist and music composer creating original songs that hold a feeling, a place and a story. My work moves between intimate writing and cinematic sound, always looking for the honest line.</p>
+            <div class="artist-tags"><span>ORIGINAL MUSIC</span><span>LYRICS</span><span>COMPOSITION</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section artist-works" id="artist-work">
+      <div class="section-inner">
+        <p class="section-label reveal">[ 02 // SELECTED WORKS ]</p>
+        <h2 class="section-title words-pull-up">THE SONGBOOK</h2>
+        <p class="section-sub reveal">Original releases, written and composed with a love for melody, language and lived stories.</p>
+        <div class="artist-work-grid" id="artist-work-grid" aria-live="polite">
+          <p class="artist-loading">[ LOADING LATEST RELEASES FROM YOUTUBE ]</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section artist-compositions" id="artist-compositions">
+      <div class="section-inner">
+        <p class="section-label reveal">[ 03 // COMPOSITIONS &amp; COLLABORATIONS ]</p>
+        <h2 class="section-title words-pull-up">WRITTEN FOR OTHERS</h2>
+        <p class="section-sub reveal">Selected releases where I contributed as a lyricist, composer and creative collaborator.</p>
+        <div class="artist-work-grid" id="artist-composition-grid" aria-live="polite">
+          <p class="artist-loading">[ LOADING COLLABORATIONS FROM YOUTUBE ]</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section artist-contact" id="artist-contact">
+      <div class="section-inner artist-contact-inner">
+        <div><p class="section-label reveal">[ 04 // CONNECT ]</p><h2 class="section-title words-pull-up">LET'S MAKE SOMETHING THAT LASTS</h2></div>
+        <a class="btn btn-primary" href="mailto:ravinduravisara@gmail.com?subject=Music%20collaboration">START A CONVERSATION ↗</a>
+      </div>
+    </section>
   </main>
 
   <!-- ============================== ABOUT ============================== -->
