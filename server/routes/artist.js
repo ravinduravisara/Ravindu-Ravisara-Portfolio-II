@@ -40,6 +40,13 @@ async function readComposition(videoId) {
   };
 }
 
+const compositionFallback = COMPOSITIONS.map((videoId) => ({
+  videoId,
+  url: `https://www.youtube.com/watch?v=${videoId}`,
+  thumbnail: `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`,
+  role: 'COMPOSITION / COLLABORATION'
+}));
+
 router.get('/', async (_req, res, next) => {
   try {
     const response = await fetch(FEED_URL, { headers: { Accept: 'application/atom+xml' } });
@@ -67,7 +74,13 @@ router.get('/', async (_req, res, next) => {
         && !title.includes('releasing soon');
     });
 
-    const compositions = await Promise.all(COMPOSITIONS.map(readComposition));
+    const compositions = await Promise.all(COMPOSITIONS.map(async (videoId, index) => {
+      try {
+        return await readComposition(videoId);
+      } catch (_) {
+        return compositionFallback[index];
+      }
+    }));
     res.json({ source: 'youtube-rss', channelId: CHANNEL_ID, works: selectedWorks, compositions });
   } catch (error) {
     next(error);

@@ -92,11 +92,16 @@
   })();
 
   const fallbackArtistWorks = [
-    { title: 'Dase Kathawai', published: '2025-05-13', url: 'https://www.youtube.com/results?search_query=Ravindu+Ravisara+Dase+Kathawai' },
-    { title: 'Wassane', published: '2024-06-01', url: 'https://www.youtube.com/results?search_query=Ravindu+Ravisara+Wassane' },
-    { title: 'Hitha Niwena', published: '2025-01-01', url: 'https://www.youtube.com/results?search_query=Ravindu+Ravisara+Hitha+Niwena' },
-    { title: 'Dakina Hamaware', published: '2024-01-01', url: 'https://www.youtube.com/results?search_query=Ravindu+Ravisara+Dakina+Hamaware' },
-    { title: 'More from the artist', published: '', url: 'https://www.youtube.com/@RavinduRavisara' }
+    { title: 'Dase Kathawai', published: '2025-05-13', videoId: 'bpbPM7gEpno', url: 'https://www.youtube.com/watch?v=bpbPM7gEpno', thumbnail: 'https://i.ytimg.com/vi/bpbPM7gEpno/hqdefault.jpg' },
+    { title: 'Wassane', published: '2024-07-13', videoId: 'lHN6PVn7trA', url: 'https://www.youtube.com/watch?v=lHN6PVn7trA', thumbnail: 'https://i.ytimg.com/vi/lHN6PVn7trA/hqdefault.jpg' },
+    { title: 'Hitha Niwena', published: '2024-12-22', videoId: 'RrKDqyG2Oik', url: 'https://www.youtube.com/watch?v=RrKDqyG2Oik', thumbnail: 'https://i.ytimg.com/vi/RrKDqyG2Oik/hqdefault.jpg' }
+  ];
+  const fallbackCompositions = [
+    { title: 'Oba magemai', videoId: 'Lv28G1RKgY4', url: 'https://www.youtube.com/watch?v=Lv28G1RKgY4', thumbnail: 'https://i.ytimg.com/vi/Lv28G1RKgY4/hqdefault.jpg' },
+    { title: 'Dewliye Mage', videoId: 'aie43g0Ayvw', url: 'https://www.youtube.com/watch?v=aie43g0Ayvw', thumbnail: 'https://i.ytimg.com/vi/aie43g0Ayvw/hqdefault.jpg' },
+    { title: 'Sihine', videoId: 'soR1Vj6yC4s', url: 'https://www.youtube.com/watch?v=soR1Vj6yC4s', thumbnail: 'https://i.ytimg.com/vi/soR1Vj6yC4s/hqdefault.jpg' },
+    { title: 'Heena Raaka', videoId: 'vhPEGyESUvU', url: 'https://www.youtube.com/watch?v=vhPEGyESUvU', thumbnail: 'https://i.ytimg.com/vi/vhPEGyESUvU/hqdefault.jpg' },
+    { title: 'Saragaye', videoId: 'NS6Z5xwuXlw', url: 'https://www.youtube.com/watch?v=NS6Z5xwuXlw', thumbnail: 'https://i.ytimg.com/vi/NS6Z5xwuXlw/hqdefault.jpg' }
   ];
 
   function renderArtistWorks(works, isLiveData, containerId = 'artist-work-grid', isComposition = false) {
@@ -162,6 +167,7 @@
       }
     } catch (_) {
       renderArtistWorks(fallbackArtistWorks, false);
+      renderArtistWorks(fallbackCompositions, false, 'artist-composition-grid', true);
     }
   }
 
