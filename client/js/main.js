@@ -335,13 +335,4 @@
   ------------------------------------------------------------------ */
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // resume placeholder link — easy to swap for a real PDF
-  const resumeBtn = document.getElementById('resume-btn');
-  if (resumeBtn) {
-    resumeBtn.addEventListener('click', (e) => {
-      // prevent dead link until a real CV file exists
-      e.preventDefault();
-      window.location.href = 'mailto:ravinduravisara@gmail.com?subject=CV%20Request';
-    });
-  }
 })();
