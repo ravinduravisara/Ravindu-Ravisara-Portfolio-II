@@ -118,6 +118,7 @@
     { title: 'Hitha Niwena', published: '2024-12-22', videoId: 'RrKDqyG2Oik', url: 'https://www.youtube.com/watch?v=RrKDqyG2Oik', thumbnail: 'https://i.ytimg.com/vi/RrKDqyG2Oik/hqdefault.jpg' }
   ];
   const fallbackCompositions = [
+    { title: 'Pahasara — Thibena Thuru (තිබෙනා තුරු)', videoId: '6lCIVC4VP3s', url: 'https://www.youtube.com/watch?v=6lCIVC4VP3s', thumbnail: 'https://i.ytimg.com/vi/6lCIVC4VP3s/hqdefault.jpg' },
     { title: 'Oba magemai', videoId: 'Lv28G1RKgY4', url: 'https://www.youtube.com/watch?v=Lv28G1RKgY4', thumbnail: 'https://i.ytimg.com/vi/Lv28G1RKgY4/hqdefault.jpg' },
     { title: 'Dewliye Mage', videoId: 'aie43g0Ayvw', url: 'https://www.youtube.com/watch?v=aie43g0Ayvw', thumbnail: 'https://i.ytimg.com/vi/aie43g0Ayvw/hqdefault.jpg' },
     { title: 'Sihine', videoId: 'soR1Vj6yC4s', url: 'https://www.youtube.com/watch?v=soR1Vj6yC4s', thumbnail: 'https://i.ytimg.com/vi/soR1Vj6yC4s/hqdefault.jpg' },
@@ -184,7 +185,12 @@
       if (!Array.isArray(data.works) || !data.works.length) throw new Error('EMPTY');
       renderArtistWorks(data.works, true);
       if (Array.isArray(data.compositions) && data.compositions.length) {
-        renderArtistWorks(data.compositions, true, 'artist-composition-grid', true);
+        const featuredComposition = fallbackCompositions[0];
+        const compositions = [
+          featuredComposition,
+          ...data.compositions.filter((work) => work.videoId !== featuredComposition.videoId)
+        ];
+        renderArtistWorks(compositions, true, 'artist-composition-grid', true);
       }
     } catch (_) {
       renderArtistWorks(fallbackArtistWorks, false);
