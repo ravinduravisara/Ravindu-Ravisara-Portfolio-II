@@ -55,6 +55,7 @@
     href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&display=swap"
     rel="stylesheet"
   />
+  <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.js"></script>
 
   <!-- Generated from css/tailwind.css with npm run build:css -->
   <link rel="stylesheet" href="css/style.css" />
@@ -92,18 +93,18 @@
           <a href="#artist-contact" class="nav-link"><span class="nav-num">04.</span>CONNECT</a>
         </nav>
         <button class="mode-toggle" type="button" data-artist-toggle aria-pressed="false">
-          <span class="mode-toggle-icon" aria-hidden="true">♫</span>
+          <i data-lucide="music-2" class="mode-toggle-icon" aria-hidden="true"></i>
           <span class="mode-toggle-label">ARTIST MODE</span>
         </button>
 
-        <button class="menu-toggle" id="menu-toggle" aria-label="Open menu" aria-expanded="false">
-          <span></span><span></span>
+        <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+          <i data-lucide="menu" aria-hidden="true"></i>
         </button>
       </header>
 
       <!-- mobile menu overlay -->
       <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
-        <button class="menu-close" id="menu-close" aria-label="Close menu">✕</button>
+        <button class="menu-close" id="menu-close" type="button" aria-label="Close menu"><i data-lucide="x" aria-hidden="true"></i></button>
         <nav class="mobile-nav" aria-label="Mobile">
           <a href="#about" class="engineering-nav"><span>01.</span> ABOUT</a>
           <a href="#projects"><span>02.</span> PROJECTS</a>
@@ -114,7 +115,7 @@
           <a href="#artist-compositions" class="artist-nav"><span>03.</span> COMPOSITIONS</a>
           <a href="#artist-contact" class="artist-nav"><span>04.</span> CONNECT</a>
           <button class="mode-toggle mobile-mode-toggle" type="button" data-artist-toggle aria-pressed="false">
-            <span class="mode-toggle-icon" aria-hidden="true">♫</span>
+            <i data-lucide="music-2" class="mode-toggle-icon" aria-hidden="true"></i>
             <span class="mode-toggle-label">ARTIST MODE</span>
           </button>
         </nav>
@@ -141,14 +142,14 @@
         </p>
 
         <div class="hero-actions" data-anim="fadeUp" style="--d:950ms">
-          <a href="#projects" class="btn btn-primary"><span>✦</span> VIEW SELECTED WORK</a>
-          <a href="assets/CV%20Updated.pdf" class="btn btn-ghost" id="resume-btn" target="_blank" rel="noopener">VIEW RESUME ↗</a>
+          <a href="#projects" class="btn btn-primary"><i data-lucide="sparkles" aria-hidden="true"></i> VIEW SELECTED WORK</a>
+          <a href="assets/CV%20Updated.pdf" class="btn btn-ghost" id="resume-btn" target="_blank" rel="noopener">VIEW RESUME <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
         </div>
 
         <div class="hero-social" data-anim="fadeUp" style="--d:1050ms">
-          <a href="https://github.com/ravinduravisara" target="_blank" rel="noopener">GITHUB ↗</a>
-          <a href="https://www.linkedin.com/in/ravindu-ravisara" target="_blank" rel="noopener">LINKEDIN ↗</a>
-          <a href="mailto:ravinduravisara@gmail.com">EMAIL ↗</a>
+          <a href="https://github.com/ravinduravisara" target="_blank" rel="noopener">GITHUB <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
+          <a href="https://www.linkedin.com/in/ravindu-ravisara" target="_blank" rel="noopener">LINKEDIN <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
+          <a href="mailto:ravinduravisara@gmail.com">EMAIL <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
         </div>
       </div>
 
@@ -159,12 +160,12 @@
         <p class="hero-statement">Songs shaped by memory, place and the quiet details that stay with us.</p>
         <p class="hero-techline">SRI LANKA // ORIGINAL MUSIC // STORYTELLING</p>
         <div class="hero-actions">
-          <a href="#artist-work" class="btn btn-primary"><span>♫</span> LISTEN TO MY WORK</a>
-          <a href="#artist-contact" class="btn btn-ghost">BOOK / COLLABORATE ↗</a>
+          <a href="#artist-work" class="btn btn-primary"><i data-lucide="music-2" aria-hidden="true"></i> LISTEN TO MY WORK</a>
+          <a href="#artist-contact" class="btn btn-ghost">BOOK / COLLABORATE <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
         </div>
         <div class="hero-social">
-          <a href="https://www.youtube.com/@RavinduRavisara" target="_blank" rel="noopener">YOUTUBE ↗</a>
-          <a href="mailto:ravinduravisara@gmail.com">EMAIL ↗</a>
+          <a href="https://www.youtube.com/@RavinduRavisara" target="_blank" rel="noopener">YOUTUBE <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
+          <a href="mailto:ravinduravisara@gmail.com">EMAIL <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
         </div>
       </div>
 
@@ -293,7 +294,7 @@
     <section class="section artist-contact" id="artist-contact">
       <div class="section-inner artist-contact-inner">
         <div><p class="section-label reveal">[ 04 // CONNECT ]</p><h2 class="section-title words-pull-up">LET'S MAKE SOMETHING THAT LASTS</h2></div>
-        <a class="btn btn-primary" href="mailto:ravinduravisara@gmail.com?subject=Music%20collaboration">START A CONVERSATION ↗</a>
+        <a class="btn btn-primary" href="mailto:ravinduravisara@gmail.com?subject=Music%20collaboration">START A CONVERSATION <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
       </div>
     </section>
   </main>
@@ -439,19 +440,19 @@
             <label for="cf-message">MESSAGE</label>
             <textarea id="cf-message" name="message" rows="5" placeholder="Tell me about your project or opportunity…" required maxlength="3000"></textarea>
           </div>
-          <button type="submit" class="btn btn-primary cf-submit"><span>✦</span> SEND MESSAGE</button>
+          <button type="submit" class="btn btn-primary cf-submit"><i data-lucide="send" aria-hidden="true"></i> SEND MESSAGE</button>
           <p class="cf-status" id="cf-status" role="status" aria-live="polite"></p>
         </form>
 
         <div class="contact-links reveal" style="--d:250ms">
           <a class="cl-item" href="mailto:ravinduravisara@gmail.com">
-            <span class="cl-key">EMAIL</span><span class="cl-val">ravinduravisara@gmail.com ↗</span>
+            <span class="cl-key">EMAIL</span><span class="cl-val">ravinduravisara@gmail.com <i data-lucide="arrow-up-right" aria-hidden="true"></i></span>
           </a>
           <a class="cl-item" href="https://github.com/ravinduravisara" target="_blank" rel="noopener">
-            <span class="cl-key">GITHUB</span><span class="cl-val">github.com/ravinduravisara ↗</span>
+            <span class="cl-key">GITHUB</span><span class="cl-val">github.com/ravinduravisara <i data-lucide="arrow-up-right" aria-hidden="true"></i></span>
           </a>
           <a class="cl-item" href="https://www.linkedin.com/in/ravindu-ravisara" target="_blank" rel="noopener">
-            <span class="cl-key">LINKEDIN</span><span class="cl-val">linkedin.com/in/ravindu-ravisara ↗</span>
+            <span class="cl-key">LINKEDIN</span><span class="cl-val">linkedin.com/in/ravindu-ravisara <i data-lucide="arrow-up-right" aria-hidden="true"></i></span>
           </a>
           <div class="cl-item cl-static">
             <span class="cl-key">LOCATION</span><span class="cl-val">Sri Lanka · <em>Open to remote work</em></span>
@@ -468,7 +469,7 @@
         <span>© <span id="year"></span> RAVINDU RAVISARA</span>
       </span>
       <span class="f-meta">BUILD: 2026.PORTFOLIO · MODE: ENGINEERING · STATUS: AVAILABLE</span>
-      <a href="#top" class="f-top">BACK TO TOP ↑</a>
+      <a href="#top" class="f-top">BACK TO TOP <i data-lucide="arrow-up" aria-hidden="true"></i></a>
     </div>
   </footer>
 

@@ -7,6 +7,8 @@
 
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const isFinePointer = window.matchMedia('(pointer: fine)').matches;
+  const refreshIcons = () => window.lucide?.createIcons({ attrs: { 'stroke-width': 1.7 } });
+  refreshIcons();
 
   /* Toggle between the engineering portfolio and the artist profile. */
   (function artistMode() {
@@ -168,13 +170,14 @@
         <div class="work-meta">
           <h3>${escapeHtml(displayTitle)}</h3>
           <p>${isComposition ? 'Composition collaboration' : isLiveData && published ? `Published on YouTube · ${published}` : 'Original release'}</p>
-          <a href="${escapeAttr(work.url)}" target="_blank" rel="noopener">${isTrailer ? 'WATCH TRAILER' : 'WATCH VIDEO'} ↗</a>
+          <a href="${escapeAttr(work.url)}" target="_blank" rel="noopener">${isTrailer ? 'WATCH TRAILER' : 'WATCH VIDEO'} <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
         </div>
       `;
       container.appendChild(card);
     });
 
     container.querySelectorAll('.reveal').forEach((element) => element.classList.add('visible'));
+    refreshIcons();
   }
 
   async function loadArtistWorks() {
@@ -424,7 +427,7 @@
 
       const tech = (p.tech || []).map((t) => `<span>${escapeHtml(t)}</span>`).join('');
       const link = p.url
-        ? `<a href="${escapeAttr(p.url)}" target="_blank" rel="noopener">VIEW PROJECT ↗</a>`
+        ? `<a href="${escapeAttr(p.url)}" target="_blank" rel="noopener">VIEW PROJECT <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>`
         : '';
 
       card.innerHTML = `
@@ -442,6 +445,8 @@
       `;
       container.appendChild(card);
     });
+
+    refreshIcons();
 
     if (moreButton) {
       const hasMore = list.length > 4;
@@ -544,7 +549,8 @@
           : err.message === 'EMAIL_DELIVERY_FAILED'
             ? 'EMAIL DELIVERY FAILED'
             : 'API OFFLINE';
-        status.innerHTML = `[ ${reason} // <a href="mailto:ravinduravisara@gmail.com?subject=${subject}&body=${body}" class="text-[#AFDDFF] underline">open in your email app ↗</a> ]`;
+        status.innerHTML = `[ ${reason} // <a href="mailto:ravinduravisara@gmail.com?subject=${subject}&body=${body}" class="text-[#AFDDFF] underline">open in your email app <i data-lucide="arrow-up-right" aria-hidden="true"></i></a> ]`;
+        refreshIcons();
         status.classList.add('err');
       } finally {
         btn.disabled = false;

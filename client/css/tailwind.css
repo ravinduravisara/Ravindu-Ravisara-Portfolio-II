@@ -59,6 +59,14 @@ a {
   @apply text-[inherit] no-underline;
 }
 
+[data-lucide] {
+  width: 1em;
+  height: 1em;
+  flex: none;
+  vertical-align: -0.16em;
+  stroke-width: 1.7;
+}
+
 ::selection {
   @apply [background:var(--accent)] text-[#000];
 }
@@ -305,8 +313,8 @@ a {
   border-color: var(--accent);
 }
 .mode-toggle-icon {
-  font-size: 15px;
-  line-height: 1;
+  width: 15px;
+  height: 15px;
 }
 .mobile-mode-toggle {
   align-self: flex-start;
@@ -512,10 +520,11 @@ body.artist-mode .artist-content {
 }
 
 .menu-toggle {
-  @apply hidden flex-col gap-[6px] [background:none] [border:0] cursor-pointer [padding:8px];
+  @apply hidden items-center justify-center [background:none] [border:0] cursor-pointer [padding:8px] text-[#fff];
 }
-.menu-toggle span {
-  @apply block w-[22px] h-[1px] [background:#fff] [transition:transform_0.3s_var(--ease),_opacity_0.3s];
+.menu-toggle svg {
+  width: 22px;
+  height: 22px;
 }
 
 /* mobile menu */
@@ -530,8 +539,9 @@ body.artist-mode .artist-content {
 .menu-close {
   @apply absolute top-[max(20px,_env(safe-area-inset-top))] right-[max(20px,_env(safe-area-inset-right))]
     [background:none] [border:1px_solid_var(--border)] text-[#fff] w-[42px] h-[42px] text-[length:14px]
-    cursor-pointer;
+    cursor-pointer flex items-center justify-center;
 }
+.menu-close svg { width: 18px; height: 18px; }
 
 .mobile-nav { @apply flex flex-col gap-[26px]; }
 .mobile-nav a {
